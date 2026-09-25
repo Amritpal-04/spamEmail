@@ -1,6 +1,8 @@
 import pandas as pd
+from pathlib import Path
 
-df = pd.read_csv("../dataset/email_spam_dataset.csv")
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+df = pd.read_csv(PROJECT_DIR / "dataset" / "email_spam_dataset.csv")
 print("First 5 Rows:")
 print(df.head())
 

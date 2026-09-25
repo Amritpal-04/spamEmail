@@ -1,7 +1,11 @@
 import pandas as pd
 import re
+from pathlib import Path
 
-df = pd.read_csv("../dataset/email_spam_dataset.csv")
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+DATASET_DIR = PROJECT_DIR / "dataset"
+
+df = pd.read_csv(DATASET_DIR / "email_spam_dataset.csv")
 
 print("Original dataset:", df.shape)
 
@@ -21,7 +25,7 @@ def clean_text(text):
 
 df["clean_text"] = df["text"].apply(clean_text)
 
-df.to_csv("../dataset/processed_email_spam.csv", index=False)
+df.to_csv(DATASET_DIR / "processed_email_spam.csv", index=False)
 
 print("Processing complete!")
 print("Processed dataset:", df.shape)
